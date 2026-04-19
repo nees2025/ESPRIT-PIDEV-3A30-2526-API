@@ -1,0 +1,160 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}Produits — Descovria{% endblock %}
+
+{% block body %}
+
+    {# ══ HERO ══ #}
+    <section class="hero-wrap hero-wrap-2 js-fullheight"
+             style="background-image: url({{ asset('images/bg_1.jpg') }});">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs">
+                        <span class="mr-2">
+                            <a href="{{ path('app_home') }}">Accueil <i class="fa fa-chevron-right"></i></a>
+                        </span>
+                        <span>Produits <i class="fa fa-chevron-right"></i></span>
+                    </p>
+                    <h1 class="mb-0 bread">Produits</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# ══ BARRE DE RECHERCHE ══ #}
+    <section class="ftco-section ftco-no-pb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="search-wrap-1 ftco-animate">
+                        <form action="#" class="search-property-1">
+                            <div class="row no-gutters">
+                                <div class="col-lg d-flex">
+                                    <div class="form-group p-4 border-0">
+                                        <label>Événement</label>
+                                        <div class="form-field">
+                                            <div class="icon"><span class="fa fa-search"></span></div>
+                                            <input type="text" class="form-control" placeholder="Rechercher un lieu">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg d-flex">
+                                    <div class="form-group p-4">
+                                        <label>Date d'arrivée</label>
+                                        <div class="form-field">
+                                            <div class="icon"><span class="fa fa-calendar"></span></div>
+                                            <input type="text" class="form-control checkin_date" placeholder="Date d'arrivée">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg d-flex">
+                                    <div class="form-group p-4">
+                                        <label>Date de départ</label>
+                                        <div class="form-field">
+                                            <div class="icon"><span class="fa fa-calendar"></span></div>
+                                            <input type="text" class="form-control checkout_date" placeholder="Date de départ">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg d-flex">
+                                    <div class="form-group p-4">
+                                        <label>Budget maximum</label>
+                                        <div class="form-field">
+                                            <div class="select-wrap">
+                                                <div class="icon"><span class="fa fa-chevron-down"></span></div>
+                                                <select class="form-control">
+                                                    <option>500 DT</option>
+                                                    <option>1 000 DT</option>
+                                                    <option>2 000 DT</option>
+                                                    <option>5 000 DT</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg d-flex">
+                                    <div class="form-group d-flex w-100 border-0">
+                                        <div class="form-field w-100 align-items-center d-flex">
+                                            <input type="submit" value="Rechercher"
+                                                   class="align-self-stretch form-control btn btn-primary">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# ══ LISTE DES HÔTELS ══ #}
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                {% set produits = [
+                    {img: 'hotel-resto-1.jpg', price: '200 DT', days: '8 Jours', name: 'Hôtel Carthage Tunis', location: 'Tunis, Tunisie', type: 'mountains'},
+                    {img: 'hotel-resto-2.jpg', price: '250 DT', days: '10 Jours', name: 'Hôtel Djerba Plaza', location: 'Djerba, Tunisie', type: 'beach'},
+                    {img: 'hotel-resto-3.jpg', price: '180 DT', days: '7 Jours', name: 'Hôtel Hammamet Garden', location: 'Hammamet, Tunisie', type: 'beach'},
+                    {img: 'hotel-resto-4.jpg', price: '300 DT', days: '8 Jours', name: 'Hôtel Ksar Ghilane', location: 'Tozeur, Tunisie', type: 'beach'},
+                    {img: 'hotel-resto-5.jpg', price: '220 DT', days: '10 Jours', name: 'Hôtel Sidi Bou Saïd', location: 'Sidi Bou Saïd, Tunisie', type: 'beach'},
+                    {img: 'hotel-resto-6.jpg', price: '190 DT', days: '7 Jours', name: 'Hôtel Medina Sousse', location: 'Sousse, Tunisie', type: 'beach'},
+                    {img: 'hotel-resto-7.jpg', price: '210 DT', days: '7 Jours', name: 'Hôtel Tabarka Beach', location: 'Tabarka, Tunisie', type: 'beach'},
+                    {img: 'hotel-resto-8.jpg', price: '175 DT', days: '7 Jours', name: 'Hôtel Sfax Centre', location: 'Sfax, Tunisie', type: 'beach'},
+                    {img: 'hotel-resto-9.jpg', price: '200 DT/nuit', days: '3 Jours', name: 'Hôtel Yasmine Hammamet', location: 'Hammamet, Tunisie', type: 'beach'},
+                ] %}
+
+                {% for produit in produits %}
+                <div class="col-md-4 ftco-animate">
+                    <div class="project-wrap hotel">
+                        <a href="#" class="img"
+                           style="background-image: url({{ asset('images/' ~ produit.img) }});">
+                            <span class="price">{{ produit.price }}/pers.</span>
+                        </a>
+                        <div class="text p-4">
+                            <p class="star mb-2">
+                                {% for i in 1..5 %}<span class="fa fa-star"></span>{% endfor %}
+                            </p>
+                            <span class="days">{{ produit.days }}</span>
+                            <h3><a href="#">{{ produit.name }}</a></h3>
+                            <p class="location">
+                                <span class="fa fa-map-marker"></span> {{ produit.location }}
+                            </p>
+                            <ul>
+                                <li><span class="flaticon-shower"></span>2</li>
+                                <li><span class="flaticon-king-size"></span>3</li>
+                                <li>
+                                    {% if produit.type == 'mountains' %}
+                                        <span class="flaticon-mountains"></span>Montagne
+                                    {% else %}
+                                        <span class="flaticon-sun-umbrella"></span>Plage
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            {# Pagination #}
+            <div class="row mt-5">
+                <div class="col text-center">
+                    <div class="block-27">
+                        <ul>
+                            <li><a href="#">&lt;</a></li>
+                            <li class="active"><span>1</span></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">&gt;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

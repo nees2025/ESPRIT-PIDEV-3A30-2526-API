@@ -1,0 +1,57 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}Détails du Trajet{% endblock %}
+
+{% block body %}
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="mb-3">Trajet: {{ covoiturage.depart }} ➔ {{ covoiturage.destination }}</h2>
+                <div class="meta mb-3">
+                    <p><strong>Type:</strong> {{ covoiturage.type|upper }}</p>
+                    <p><strong>Prix suggéré:</strong> <span class="badge badge-success" style="font-size: 1.2rem;">{{ covoiturage.prix }} DT</span></p>
+                    <p><strong>Places disponibles:</strong> {{ covoiturage.placesDisponibles }}</p>
+                    <p><strong>Date:</strong> {{ covoiturage.dateDepart|date('d/m/Y H:i') }}</p>
+                </div>
+                
+                <hr>
+                
+                <div class="pt-5 mt-5">
+                    <h3 class="mb-5">{{ covoiturage.comments|length }} Commentaires des passagers</h3>
+                    <ul class="comment-list">
+                        {% for comment in covoiturage.comments %}
+                        <li class="comment">
+                            <div class="comment-body">
+                                <h3>{{ comment.author }}</h3>
+                                <div class="meta">{{ comment.createdAt|date('d M Y H:i') }}</div>
+                                <p>{{ comment.content }}</p>
+                            </div>
+                        </li>
+                        {% else %}
+                        <p>Pas encore de commentaires pour ce trajet.</p>
+                        {% endfor %}
+                    </ul>
+                    
+                    <div class="comment-form-wrap pt-5">
+                        <h3 class="mb-5">Laisser un commentaire</h3>
+                        <form action="{{ path('app_covoiturage_show', {id: covoiturage.id}) }}" method="post" class="p-5 bg-light">
+                            <div class="form-group">
+                                <label for="author">Nom</label>
+                                <input type="text" class="form-control" name="author" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment">Message</label>
+                                <textarea name="comment" cols="30" rows="5" class="form-control" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Envoyer" class="btn py-3 px-4 btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

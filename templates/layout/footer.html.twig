@@ -1,0 +1,119 @@
+{# ══════════════════════════════════════════
+   FOOTER — Descovria
+   ══════════════════════════════════════════ #}
+
+{# ── CTA Banner ── #}
+<section class="ftco-intro ftco-section ftco-no-pt">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+                <div class="img" style="background-image: url({{ asset('images/bg_2.jpg') }});">
+                    <div class="overlay"></div>
+                    <h2>Nous sommes Descovria — Votre Agence de Voyage</h2>
+                    <p>Nous gérons votre voyage de rêve en Tunisie et partout dans le monde</p>
+                    <p class="mb-0">
+                        <a href="{{ path('app_contact') }}" class="btn btn-primary px-4 py-3">
+                            Demander un Devis
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# ── Footer principal ── #}
+<footer class="ftco-footer bg-bottom ftco-no-pt" style="background-image: url({{ asset('images/bg_3.jpg') }});">
+    <div class="container">
+        <div class="row mb-5">
+
+            {# À propos #}
+            <div class="col-md pt-5">
+                <div class="ftco-footer-widget pt-md-5 mb-4">
+                    <h2 class="ftco-heading-2">Descovria</h2>
+                    <p>Découvrez la Tunisie et le monde avec Descovria — votre agence de voyage de confiance.</p>
+                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft">
+                        <li class="ftco-animate">
+                            <a href="#"><span class="fa fa-twitter"></span></a>
+                        </li>
+                        <li class="ftco-animate">
+                            <a href="#"><span class="fa fa-facebook"></span></a>
+                        </li>
+                        <li class="ftco-animate">
+                            <a href="#"><span class="fa fa-instagram"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {# Informations #}
+            <div class="col-md pt-5 border-left">
+                <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-5">
+                    <h2 class="ftco-heading-2">Informations</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="py-2 d-block">Demande en ligne</a></li>
+                        <li><a href="#" class="py-2 d-block">Renseignements généraux</a></li>
+                        <li><a href="#" class="py-2 d-block">Conditions de réservation</a></li>
+                        <li><a href="#" class="py-2 d-block">Politique de confidentialité</a></li>
+                        <li><a href="#" class="py-2 d-block">Politique de remboursement</a></li>
+                        <li><a href="{{ path('app_contact') }}" class="py-2 d-block">Nous appeler</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            {# Expériences #}
+            <div class="col-md pt-5 border-left">
+                <div class="ftco-footer-widget pt-md-5 mb-4">
+                    <h2 class="ftco-heading-2">Expériences</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="py-2 d-block">Aventure</a></li>
+                        <li><a href="{{ path('app_hotel') }}" class="py-2 d-block">Produits &amp; Restaurants</a></li>
+                        <li><a href="#" class="py-2 d-block">Plage</a></li>
+                        <li><a href="#" class="py-2 d-block">Nature</a></li>
+                        <li><a href="#" class="py-2 d-block">Camping</a></li>
+                        <li><a href="#" class="py-2 d-block">Fêtes &amp; Événements</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            {# Contact #}
+            <div class="col-md pt-5 border-left">
+                <div class="ftco-footer-widget pt-md-5 mb-4">
+                    <h2 class="ftco-heading-2">Vous avez des questions ?</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <li>
+                                <span class="icon fa fa-map-marker"></span>
+                                <span class="text">Tunis, Tunisie</span>
+                            </li>
+                            <li>
+                                <a href="tel:+21600000000">
+                                    <span class="icon fa fa-phone"></span>
+                                    <span class="text">+216 00 000 000</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:contact@descovria.tn">
+                                    <span class="icon fa fa-paper-plane"></span>
+                                    <span class="text">contact@descovria.tn</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        {# Copyright #}
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>
+                    Copyright &copy; {{ "now"|date("Y") }} Descovria — Tous droits réservés |
+                    Développé avec <i class="fa fa-heart" aria-hidden="true"></i> par l'équipe Descovria
+                </p>
+            </div>
+        </div>
+
+    </div>
+</footer>

@@ -1,0 +1,1 @@
+﻿INSERT INTO covoiturage (depart, destination, date_depart, places_disponibles, prix, type) VALUES ('Tunis', 'Sfax', '2026-04-09 12:00:00', 2, 60.0, 'taxi'), ('Sousse', 'Bizerte', '2026-04-17 12:00:00', 4, 25.0, 'bus');

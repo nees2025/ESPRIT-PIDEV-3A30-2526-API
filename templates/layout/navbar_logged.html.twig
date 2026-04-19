@@ -1,0 +1,57 @@
+{# ══════════════════════════════════════════
+   NAVBAR LOGGED — Descovria
+   Utilise app.request.attributes pour détecter la page active
+   ══════════════════════════════════════════ #}
+
+{% set current_route = app.request.attributes.get('_route') %}
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+
+        {# ── Logo Descovria ── #}
+        <a class="navbar-brand" href="{{ path('app_home_logged') }}">
+            Descovria<span>Agence de Voyage</span>
+        </a>
+
+        {# ── Bouton mobile ── #}
+        <button class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        {# ── Liens de navigation ── #}
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item {{ current_route == 'app_home_logged' ? 'active' : '' }}">
+                    <a href="{{ path('app_home_logged') }}" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item {{ current_route == 'app_destination' ? 'active' : '' }}">
+                    <a href="{{ path('app_destination') }}" class="nav-link">Événements</a>
+                </li>
+                <li class="nav-item {{ current_route == 'app_hotel' ? 'active' : '' }}">
+                    <a href="{{ path('app_hotel') }}" class="nav-link">Produit</a>
+                </li>
+                <li class="nav-item {{ current_route == 'app_contact' ? 'active' : '' }}">
+                    <a href="{{ path('app_contact') }}" class="nav-link">Réclamation</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Consulter mon profil</a>
+                </li>
+
+                {# ── Séparateur ── #}
+                <li class="nav-item"><span class="nav-link" style="opacity:0.3">|</span></li>
+
+                {# ── Déconnexion ── #}
+                <li class="nav-item">
+                    <a href="{{ path('app_home') }}" class="nav-link">
+                        <i class="fa fa-sign-out"></i> Déconnexion
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+{# END nav #}

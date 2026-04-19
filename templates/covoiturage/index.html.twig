@@ -1,0 +1,46 @@
+{% extends 'layout/base.html.twig' %}
+
+{% block title %}Covoiturages Disponibles{% endblock %}
+
+{% block body %}
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <h2 class="mb-4">Covoiturages Disponibles</h2>
+                <p>Réservez votre taxi ou bus en quelques clics.</p>
+                <a href="{{ path('app_covoiturage_new') }}" class="btn btn-primary py-3 px-5">Proposer un trajet</a>
+            </div>
+        </div>
+        <div class="row">
+            {% for c in covoiturages %}
+            <div class="col-md-4 ftco-animate">
+                <div class="destination">
+                    <div class="text p-3">
+                        <div class="d-flex">
+                            <div class="one">
+                                <h3><a href="{{ path('app_covoiturage_show', {id: c.id}) }}">{{ c.depart }} ➔ {{ c.destination }}</a></h3>
+                            </div>
+                            <div class="two">
+                                <span class="price">{{ c.prix }} DT</span>
+                            </div>
+                        </div>
+                        <p>Type: <strong>{{ c.type|upper }}</strong></p>
+                        <p>Date: {{ c.dateDepart|date('d/m/Y H:i') }}</p>
+                        <p>Places: {{ c.placesDisponibles }}</p>
+                        <hr>
+                        <p class="bottom-area d-flex">
+                            <span class="ml-auto"><a href="{{ path('app_covoiturage_show', {id: c.id}) }}">Voir Détails</a></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-md-12 text-center">
+                <p>Aucun trajet disponible pour le moment.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
