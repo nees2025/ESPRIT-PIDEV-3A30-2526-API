@@ -24,7 +24,11 @@
                         <li class="comment">
                             <div class="comment-body">
                                 <h3>{{ comment.author }}</h3>
-                                <div class="meta">{{ comment.createdAt|date('d M Y H:i') }}</div>
+                                <div class="meta">{{ comment.createdAt|date('d M Y H:i') }} 
+                                    <span class="badge {{ comment.sentiment == 'positif' ? 'badge-success' : (comment.sentiment == 'négatif' ? 'badge-danger' : 'badge-secondary') }}">
+                                        IA: {{ comment.sentiment|upper }}
+                                    </span>
+                                </div>
                                 <p>{{ comment.content }}</p>
                             </div>
                         </li>

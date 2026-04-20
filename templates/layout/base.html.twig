@@ -29,6 +29,20 @@
     {# ══ NAVBAR ══ #}
     {% block navbar %}{% include 'layout/navbar.html.twig' %}{% endblock %}
 
+    {# ══ NOTIFICATIONS ══ #}
+    <div class="container mt-3">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label == 'info' ? 'primary' : (label == 'warning' ? 'warning' : 'success') }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
     {# ══ CONTENU DE LA PAGE ══ #}
     {% block body %}{% endblock %}
 

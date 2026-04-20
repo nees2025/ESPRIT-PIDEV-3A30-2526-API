@@ -27,6 +27,9 @@ class Comment
     #[ORM\JoinColumn(nullable: false)]
     private ?Covoiturage $covoiturage = null;
 
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $sentiment = 'neutre';
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -78,6 +81,17 @@ class Comment
     public function setCovoiturage(?Covoiturage $covoiturage): static
     {
         $this->covoiturage = $covoiturage;
+        return $this;
+    }
+
+    public function getSentiment(): ?string
+    {
+        return $this->sentiment;
+    }
+
+    public function setSentiment(?string $sentiment): static
+    {
+        $this->sentiment = $sentiment;
         return $this;
     }
 }
